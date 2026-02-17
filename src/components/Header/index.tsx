@@ -1,6 +1,9 @@
+import  logo  from "/logoStudio.png"
 
 export const Header = () => {
     return (
-        <header className="bg-amber-800">aqui</header>
+        <header className="">
+            <img className="" src={logo} alt="" />
+        </header>
     )
 }
