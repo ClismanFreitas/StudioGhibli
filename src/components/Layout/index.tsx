@@ -21,10 +21,9 @@ export const Layout = () => {
             </div>
 
         </div>
-        <div className="relative z-10 D">
+        <div className="absolute top-0 z-10  w-full ">
             <Footer />
         </div>
         </>
-        
     )
 }
