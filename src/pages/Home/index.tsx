@@ -1,8 +1,9 @@
 import { useFilms } from "../../hook/useFilms"
 import { formatSeaconds } from "../../utils/formatSeaconds"
+import { Link } from "react-router-dom"
+import { Footer } from "../../components/Footer"
 
 export const Home = () => {
-
     const { data, isLoading, error } = useFilms()
 
     if (isLoading) {
@@ -39,11 +40,9 @@ if (error) {
 
     return (
         <>
-            <ul className="
+    <ul className="
     mt-10
     h-[76vh]
-    overflow-y-auto
-    pb-15
 
     flex
     flex-col
@@ -64,9 +63,9 @@ if (error) {
   ">
                 {
                     data?.sort((a, b) => a.title.localeCompare(b.title)).slice(0, 10).map(conteudo => (
-
-                        <li key={conteudo.id} className="bg-green-950/50   list-none rounded-3xl text-white text-center mb-3 h-auto rounded-t-4xl">
-                            <img className="rounded-t-4xl h-112.5 sm:w-full lg:w-full" src={conteudo.image} alt="" />
+                      <Link to={`/${conteudo.title}/${conteudo.id}`}>
+                        <li key={conteudo.id} className="bg-green-950/50   list-none rounded-3xl text-white text-center mb-3 h-auto rounded-t-4xl ">
+                            <img className="rounded-t-4xl h-112.5 sm:w-full lg:w-full " src={conteudo.image} alt="" />
                             <div className="py-5 ">
                                 <h1 className="font-bold text-[20px] ">
                                     {conteudo.title}
@@ -79,8 +78,10 @@ if (error) {
                                 </div>
                             </div>
                         </li>
+                      </Link>
                     ))
                 }
+                <Footer />
             </ul>
         </>
 

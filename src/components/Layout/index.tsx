@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom"
 import { Header } from "../Header"
-import { Footer } from "../Footer"
 import backgroundPadrao from "/background.jpg"
 
 export const Layout = () => {
@@ -15,15 +14,16 @@ export const Layout = () => {
 
             <div className="absolute inset-0 bg-black/30" />
 
-            <div className="relative z-10 h-full w-[90%] m-auto ">
+            <div className="relative z-10 h-full w-[90%] m-auto overflow-y-auto scrollbar-thin
+scrollbar-thumb-white/30
+scrollbar-thumb-rounded-full
+scrollbar-track-transparent">
                 <Header />
                 <Outlet />
             </div>
 
         </div>
-        <div className="absolute top-0 z-10  w-full ">
-            <Footer />
-        </div>
+
         </>
     )
 }
