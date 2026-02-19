@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom"
 import { useFilms } from "../../hook/useFilms"
-import { formatSeaconds } from "../../utils/formatSeaconds"
+import { formatSeconds } from "../../utils/formatSeconds"
+import { Footer } from "../../components/Footer"
 
 export const FilmDetail = () => {
     const { id } = useParams()
@@ -30,7 +31,7 @@ export const FilmDetail = () => {
         )
     }
 
-    const renderStars = (score: any) => {
+    const renderStars = (score: number) => {
         if (score >= 90) return <p>⭐⭐⭐⭐⭐</p>
         if (score >= 80) return <p>⭐⭐⭐⭐</p>
         if (score >= 70) return <p>⭐⭐⭐</p>
@@ -39,28 +40,33 @@ export const FilmDetail = () => {
     }
 
     const dados = data?.find(film => film.id === (id))
+    console.log(dados);
     return (
         <>
-            <div className=" flex justify-center mt-5">
-                <Link to="/" className="bg-green-950/50 p-3">
+            <div className=" flex justify-center mt-5 text-white">
+                <Link to="/" className="bg-green-950/50 px-6 py-3 rounded-2xl hover:ring-2 hover:ring-green-500 hover:duration-100 hover:ease-in">
                     Voltar
                 </Link>
             </div>
-            <div className="bg-green-950/50 text-center items-center mt-5 p-5 overflow-y-auto mb-5 text-white rounded-3xl">
+            <div className="bg-green-950/50 text-center items-center mt-5 p-5 overflow-y-auto mb-5 text-white rounded-3xl sm:w-125 sm:m-auto sm:my-5 ">
                 <div className=" flex justify-center">
                     <img className="w-[60%] justify-center" src={dados?.image} alt="" />
                 </div>    
                 <h1>{dados?.title}
-                    {renderStars(dados?.rt_score)}
                 </h1>
+                    {dados && renderStars(dados?.rt_score)}
                 <div className="flex justify-around ">
                     <p>{dados?.release_date}</p>
-                    <p>{formatSeaconds(dados?.running_time)}</p>
+                    <p>{dados && formatSeconds(dados?.running_time)}</p>
                 </div>
-                <div className="max-h-50 overflow-y-auto">
+                <div className="max-h-50 overflow-y-auto my-3">
                     <p>{dados?.description}</p>
                 </div>
+                <p>Director: <b>{dados?.director}</b></p>
+                <p>Producer: <b>{dados?.producer}</b></p>
             </div>
+            <Footer />
         </>
+        
     )
 }

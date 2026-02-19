@@ -4,7 +4,7 @@ import { getFilm } from "../services/getFilm"
 
 export const useFilms = () => {
     return useQuery<Films[]>({
-        queryKey: ["filmes", ],
+        queryKey: ["filmes",],
         queryFn:() => getFilm(),
     })
 }

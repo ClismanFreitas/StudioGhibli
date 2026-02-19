@@ -5,12 +5,12 @@
   height: 0px;
 }
 
-/* Firefox */
+
 * {
-  scrollbar-width: none; /* hide */
+  scrollbar-width: none; 
 }
 
-/* IE/Edge antigo */
+
 * {
   -ms-overflow-style: none;
 }

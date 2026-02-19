@@ -14,10 +14,7 @@ export const Layout = () => {
 
             <div className="absolute inset-0 bg-black/30" />
 
-            <div className="relative z-10 h-full w-[90%] m-auto overflow-y-auto scrollbar-thin
-scrollbar-thumb-white/30
-scrollbar-thumb-rounded-full
-scrollbar-track-transparent">
+            <div className="relative z-10 h-full w-[90%] m-auto overflow-y-auto">
                 <Header />
                 <Outlet />
             </div>

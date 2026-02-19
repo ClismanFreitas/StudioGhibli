@@ -1,5 +1,5 @@
 import { useFilms } from "../../hook/useFilms"
-import { formatSeaconds } from "../../utils/formatSeaconds"
+import { formatSeconds } from "../../utils/formatSeconds"
 import { Link } from "react-router-dom"
 import { Footer } from "../../components/Footer"
 
@@ -64,7 +64,7 @@ if (error) {
                 {
                     data?.sort((a, b) => a.title.localeCompare(b.title)).slice(0, 10).map(conteudo => (
                       <Link to={`/${conteudo.title}/${conteudo.id}`}>
-                        <li key={conteudo.id} className="bg-green-950/50   list-none rounded-3xl text-white text-center mb-3 h-auto rounded-t-4xl ">
+                        <li key={conteudo.id} className="bg-green-950/50   list-none rounded-3xl text-white text-center mb-3 h-auto rounded-t-4xl hover:ring-3 hover:ring-green-500 hover:duration-100 hover:ease-in">
                             <img className="rounded-t-4xl h-112.5 sm:w-full lg:w-full " src={conteudo.image} alt="" />
                             <div className="py-5 ">
                                 <h1 className="font-bold text-[20px] ">
@@ -74,7 +74,7 @@ if (error) {
                                 <div className="flex justify-around ">
                                     <p>{conteudo.release_date}</p>
 
-                                    <p>{formatSeaconds(conteudo.running_time)}</p>
+                                    <p>{formatSeconds(conteudo.running_time)}</p>
                                 </div>
                             </div>
                         </li>
